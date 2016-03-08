@@ -1,0 +1,6 @@
+en:
+  comment_preview_button:
+    preview: Preview
+  comment_preview_form:
+    header: Preview your comment
+    helptext: Your comment will appear like this. Hit 'post' to save it, or 'edit' to make further changes.

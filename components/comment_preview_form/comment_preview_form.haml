@@ -1,0 +1,30 @@
+.comment-preview-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1{translate: "comment_preview_form.title"}
+
+  .modal-body
+    %p.comment-preview-form__helptext{translate: "comment_preview_form.helptext"}
+
+    .comment-preview-form__preview
+      .thread-item__header.media
+        .media-left
+          %user_avatar{user: "author()", size: "small"}
+        .media-body
+          %h3.new-comment__in-reply-to{ng-if: "comment.parentId"}
+            %strong {{ author().name }}
+            %span{translate: "new_comment_item.in_reply_to", translate-value-recipient: "{{comment.parentAuthorName}}"}
+          %h3.new-comment__author-name{ng-if: "!comment.parentId"}
+            {{ author().name }}
+          .sr-only{ng-if: "!comment.parentId", translate: "new_comment_item.aria_label", translate-value-author: "{{author().name}}"}
+
+      .thread-item__body.lmo-markdown-wrapper{marked: "comment.body" }
+
+      .thread-item__attachments
+        .thread-item__attachment{ng-repeat: "attachment in comment.newAttachments() track by attachment.id"}
+          %attachment_preview{attachment: "attachment", mode: "thread"}
+
+  .modal-footer
+    %button.lmo-btn--submit.proposal-form__start-btn{type: "button", ng-click: "submit()", translate: "common_form.submit_button.label"}
+    %button.lmo-btn--cancel.proposal-form__cancel-btn{ng-click: "$close($event)", type: "button", translate: "common.action.edit"}

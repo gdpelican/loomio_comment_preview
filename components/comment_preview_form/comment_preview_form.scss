@@ -1,0 +1,13 @@
+.comment-preview-form__preview {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.comment-preview-form__helptext {
+  color: $grey-on-grey;
+  font-style: italic;
+  @include fontSmall;
+}
